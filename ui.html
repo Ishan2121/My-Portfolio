@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishan Chamoli | Designer & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A10;
+            color: #E0E0E0;
+        }
+
+        #neural-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place it behind all content */
+        }
+
+        .highlight {
+            background: -webkit-linear-gradient(45deg, #A78BFA, #F472B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(10, 10, 16, 0.5); /* Slightly more opaque for readability */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease-out; /* Faster transition for tilt */
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Scroll Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    
+    <canvas id="neural-background"></canvas>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold tracking-tight text-white">Ishan Chamoli</a>
+                <nav class="hidden md:flex items-center space-x-8 text-sm">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                    <a href="#experience" class="text-gray-300 hover:text-white transition-colors duration-300">Experience</a>
+                    <a href="#work" class="text-gray-300 hover:text-white transition-colors duration-300">Work</a>
+                    <a href="#resume" class="text-gray-300 hover:text-white transition-colors duration-300">Resume</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+                </nav>
+                 <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+         <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0A0A10]/90 backdrop-blur-lg px-6 pb-4">
+            <a href="#about" class="block py-2 text-gray-300 hover:text-white">About</a>
+            <a href="#experience" class="block py-2 text-gray-300 hover:text-white">Experience</a>
+            <a href="#work" class="block py-2 text-gray-300 hover:text-white">Work</a>
+            <a href="#resume" class="block py-2 text-gray-300 hover:text-white">Resume</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-white">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-5xl md:text-8xl font-black text-white leading-tight reveal">
+                    Crafting <span class="highlight">intuitive</span> interfaces & powerful code.
+                </h1>
+                <p class="mt-8 text-lg text-gray-400 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">
+                    A Full-Stack Developer and UI/UX Designer bridging the gap between elegant design and robust engineering.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-5 gap-12 items-start">
+                    <div class="lg:col-span-3 reveal">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">About Me</h2>
+                        <p class="text-gray-400 leading-relaxed">
+                            I'm a motivated developer with a solid grasp of ReactJS, Tailwind CSS, Node.js, and MongoDB. My passion lies at the intersection of development and design, where I can apply my skills in UI/UX to build products that are not only functional but also delightful to use. My background in Computer Science, supplemented by certifications in UX Design and Data Analytics, provides me with a unique perspective to solve problems creatively and effectively.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-2 space-y-8 reveal" style="transition-delay: 200ms;">
+                        <div>
+                            <h3 class="font-bold text-white mb-3">Education</h3>
+                            <p class="text-gray-400">B.Tech, Computer Science<br>THDC-IHET, Tehri Garhwal</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white mb-3">Certifications</h3>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                                <li>Google UX Design by Coursera</li>
+                                <li>Google Data Analytics by Coursera</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 md:py-32">
+             <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center reveal">Professional Experience</h2>
+                <div class="max-w-2xl mx-auto">
+                    <div class="glass-card p-8 rounded-2xl reveal">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Full-Stack Developer Intern</h3>
+                                <p class="text-violet-400 mt-1">THDC India Ltd.</p>
+                            </div>
+                            <p class="text-gray-500 text-sm">Jun 2024 - Aug 2024</p>
+                        </div>
+                        <p class="text-gray-400 mt-4">
+                            Contributed to the development of web applications, gaining hands-on experience with modern full-stack technologies and collaborating within an agile team environment.
+                        </p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center reveal">Featured Projects</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-card p-8 rounded-2xl reveal">
+                        <h3 class="text-xl font-bold text-white">AI Restaurant Website</h3>
+                        <p class="text-gray-400 mt-2">A dynamic website using React, featuring an AI chatbot for bookings and FAQs to enhance user engagement.</p>
+                    </div>
+                     <div class="glass-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
+                        <h3 class="text-xl font-bold text-white">Spam News Detector</h3>
+                        <p class="text-gray-400 mt-2">A fake news classifier built with LSTM neural networks in TensorFlow, achieving a high F1-score of 0.85.</p>
+                    </div>
+                     <div class="glass-card p-8 rounded-2xl reveal">
+                        <h3 class="text-xl font-bold text-white">EPL Data Visualization</h3>
+                        <p class="text-gray-400 mt-2">Analyzed and visualized the EPL 2021-22 dataset using Python to extract and present key insights.</p>
+                    </div>
+                     <div class="glass-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
+                        <h3 class="text-xl font-bold text-white">Driver Vigilance System</h3>
+                        <p class="text-gray-400 mt-2">A Python-based computer vision system that monitors driver alertness and issues real-time fatigue alerts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center reveal">My Skills</h2>
+                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center reveal">
+                        <h3 class="font-bold text-white mb-3">Languages</h3>
+                        <p class="text-gray-400 text-sm">Python, JavaScript, SQL, Java, C/C++</p>
+                    </div>
+                     <div class="text-center reveal" style="transition-delay: 100ms;">
+                        <h3 class="font-bold text-white mb-3">Frontend</h3>
+                        <p class="text-gray-400 text-sm">React, Tailwind CSS, HTML5</p>
+                    </div>
+                     <div class="text-center reveal" style="transition-delay: 200ms;">
+                        <h3 class="font-bold text-white mb-3">Backend</h3>
+                        <p class="text-gray-400 text-sm">Node.js, Express, MongoDB</p>
+                    </div>
+                     <div class="text-center reveal" style="transition-delay: 300ms;">
+                        <h3 class="font-bold text-white mb-3">Tools & Design</h3>
+                        <p class="text-gray-400 text-sm">Figma, Power BI, Adobe Suite</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center reveal">My Resume</h2>
+                <div class="max-w-md mx-auto glass-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
+                    <p class="text-gray-400 mb-8">
+                        Feel free to view my full resume online for your records.
+                    </p>
+                    <div class="flex justify-center">
+                        <a href="https://drive.google.com/file/d/14eFchZ754D-AJpcz1f355uL71P49uq1a/view?usp=drivesdk" target="_blank" class="inline-block bg-violet-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-violet-700 transition-all duration-300 transform hover:scale-105">
+                            View Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-40">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-6xl font-black text-white leading-tight reveal">
+                    Interested in working together?
+                </h2>
+                <div class="mt-12 reveal" style="transition-delay: 200ms;">
+                    <a href="https://www.linkedin.com/in/ishan-chamoli-7015a9246/" target="_blank" class="inline-block bg-violet-600 text-white font-semibold px-10 py-4 rounded-lg text-lg hover:bg-violet-700 transition-all duration-300 transform hover:scale-105">
+                        Get in Touch on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Ishan Chamoli. Designed & Built with ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile Menu ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // --- Scroll Animations ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        revealElements.forEach((el, index) => {
+            const parent = el.parentElement;
+            if (parent.dataset.stagger) {
+                 el.style.transitionDelay = `${index * 100}ms`;
+            }
+            revealObserver.observe(el);
+        });
+
+        document.querySelectorAll('.grid').forEach(grid => {
+            if (Array.from(grid.children).every(child => child.classList.contains('reveal'))) {
+                grid.dataset.stagger = true;
+            }
+        });
+
+        // --- Holographic Effects ---
+        // 1. 3D Card Tilt
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const { width, height } = rect;
+                const rotateX = (y / height - 0.5) * -10;
+                const rotateY = (x / width - 0.5) * 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // 2. Three.js Neural Background
+        let scene, camera, renderer, particles, lines;
+        let mouseX = 0, mouseY = 0;
+        const PARTICLE_COUNT = 300;
+        const CONNECTION_DISTANCE = 1.5;
+
+        function initNeuralBackground() {
+            const canvas = document.getElementById('neural-background');
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            const positions = [];
+            const particlesData = [];
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                const x = (Math.random() - 0.5) * 10;
+                const y = (Math.random() - 0.5) * 10;
+                const z = (Math.random() - 0.5) * 10;
+                positions.push(x, y, z);
+                particlesData.push({
+                    velocity: new THREE.Vector3(-1 + Math.random() * 2, -1 + Math.random() * 2, -1 + Math.random() * 2).multiplyScalar(0.0002),
+                    numConnections: 0
+                });
+            }
+
+            const particlesGeometry = new THREE.BufferGeometry();
+            particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            
+            const pMaterial = new THREE.PointsMaterial({
+                color: 0x8A2BE2,
+                size: 0.04,
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                sizeAttenuation: true
+            });
+            particles = new THREE.Points(particlesGeometry, pMaterial);
+            particles.userData = particlesData;
+            scene.add(particles);
+
+            const segments = PARTICLE_COUNT * PARTICLE_COUNT;
+            const linePositions = new Float32Array(segments * 3);
+            
+            const lineGeometry = new THREE.BufferGeometry();
+            lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3).setUsage(THREE.DynamicDrawUsage));
+            
+            const lMaterial = new THREE.LineBasicMaterial({
+                vertexColors: false, 
+                color: 0x4A00E0,
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                opacity: 0.2
+            });
+            lines = new THREE.LineSegments(lineGeometry, lMaterial);
+            scene.add(lines);
+
+            animate();
+        }
+
+        function animate() {
+            const positions = particles.geometry.attributes.position.array;
+            const particlesData = particles.userData;
+
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                if (particlesData[i]) {
+                    particlesData[i].numConnections = 0;
+                }
+                const p = new THREE.Vector3(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
+                if (particlesData[i]) {
+                    p.add(particlesData[i].velocity);
+                }
+                if (p.x < -5 || p.x > 5) if(particlesData[i]) particlesData[i].velocity.x = -particlesData[i].velocity.x;
+                if (p.y < -5 || p.y > 5) if(particlesData[i]) particlesData[i].velocity.y = -particlesData[i].velocity.y;
+                if (p.z < -5 || p.z > 5) if(particlesData[i]) particlesData[i].velocity.z = -particlesData[i].velocity.z;
+                positions[i * 3] = p.x;
+                positions[i * 3 + 1] = p.y;
+                positions[i * 3 + 2] = p.z;
+            }
+
+            let lineVertexPos = 0;
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                const p1 = new THREE.Vector3(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
+                for (let j = i + 1; j < PARTICLE_COUNT; j++) {
+                    const p2 = new THREE.Vector3(positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]);
+                    const dist = p1.distanceTo(p2);
+                    if (dist < CONNECTION_DISTANCE) {
+                        lines.geometry.attributes.position.array[lineVertexPos++] = p1.x;
+                        lines.geometry.attributes.position.array[lineVertexPos++] = p1.y;
+                        lines.geometry.attributes.position.array[lineVertexPos++] = p1.z;
+                        lines.geometry.attributes.position.array[lineVertexPos++] = p2.x;
+                        lines.geometry.attributes.position.array[lineVertexPos++] = p2.y;
+                        lines.geometry.attributes.position.array[lineVertexPos++] = p2.z;
+                    }
+                }
+            }
+            
+            lines.geometry.setDrawRange(0, lineVertexPos / 3);
+            lines.geometry.attributes.position.needsUpdate = true;
+            particles.geometry.attributes.position.needsUpdate = true;
+
+            requestAnimationFrame(animate);
+
+            const targetRotationX = mouseY * 0.0001;
+            const targetRotationY = mouseX * 0.0001;
+            scene.rotation.x += (targetRotationX - scene.rotation.x) * 0.02;
+            scene.rotation.y += (targetRotationY - scene.rotation.y) * 0.02;
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        document.addEventListener('mousemove', e => {
+            mouseX = (e.clientX - window.innerWidth / 2);
+            mouseY = (e.clientY - window.innerHeight / 2);
+        });
+
+        initNeuralBackground();
+
+    </script>
+
+</body>
+</html>
